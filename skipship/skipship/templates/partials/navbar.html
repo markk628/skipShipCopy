@@ -1,0 +1,33 @@
+<nav class="navbar navbar-expand-md navbar-dark bg-primary shadow p-3 mb-3">
+    {% if user.is_authenticated %}
+    <div class="nav container-fluid" style="width: 500px; margin-left: 25px; margin-right: 0px;">
+        <button class="navbar-toggler" type="submit" data-toggle="collapse" data-target="#navbarResponsive">
+            <span class="navbar-toogler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/cart/all">Carts</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/cartitem/all">Items</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="text-white" style="margin-right: 15px;">Hello, <strong>{{ user }}</strong>!</div>
+    {% endif %}
+
+    <a class="navbar-brand" href="/">SkipShip</a>
+
+    <div class="btn-group-fluid btn-group-md rounded ml-auto" role="group" aria-label="Basic example">
+        {% if user.is_authenticated %}
+        <a href="{% url 'logout' %}"><button type="button" class="bar btn btn-danger">LogOut</button></a> {% else %}
+        <a href="{% url 'login' %}" class="btn btn-light ml-2">Log In</a>
+        <a href="{% url 'media-signup-page' %}" class="btn btn-primary ml-2">Sign Up</a> {% endif %}
+    </div>
+
+</nav>
